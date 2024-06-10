@@ -41,7 +41,7 @@ function AccordionTrigger({ children }: PropsWithChildren) {
     >
       <h2 className='font-semibold text-dark-purple hover:text-custom-pink text-base'>{children}</h2>
 
-      <button>{openItem === id ? <IconMinus /> : <IconPlus />}</button>
+      <button aria-label='Button Open or Close question'>{openItem === id ? <IconMinus /> : <IconPlus />}</button>
     </div>
   );
 }
