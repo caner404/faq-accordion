@@ -53,7 +53,7 @@ function AccordionContent({ children }: PropsWithChildren) {
 
   return (
     <div className={`overflow-hidden transition-[max-height] duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
-      <p className='py-4 text-pale-purple text-base'>{children}</p>
+      <p className='py-2 text-pale-purple text-base'>{children}</p>
     </div>
   );
 }
