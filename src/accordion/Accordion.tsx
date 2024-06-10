@@ -51,7 +51,11 @@ function AccordionContent({ children }: PropsWithChildren) {
   const { id } = useAccordionItemContext();
   const isOpen = openItem === id;
 
-  return isOpen ? <p className='py-4 text-pale-purple text-base'>{children}</p> : null;
+  return (
+    <div className={`overflow-hidden transition-[max-height] duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
+      <p className='py-4 text-pale-purple text-base'>{children}</p>
+    </div>
+  );
 }
 
 export function useAccordionContext() {
