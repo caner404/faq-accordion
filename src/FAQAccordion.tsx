@@ -30,26 +30,25 @@ function FAQAccordion() {
   ];
 
   return (
-    <div className='flex flex-col justify-center gap-4 rounded-xl m-5 p-5  bg-white z-50 absolute top-[18%] mt sm:top-1/3 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[520px]'>
+    <div className='flex flex-col justify-center rounded-xl m-5 p-5  bg-white z-50 absolute top-[18%] mt sm:top-1/3 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[520px]'>
       <header className='flex items-center gap-4'>
         <IconStar />
         <h1 className='text-3xl sm:text[3.5rem]'>FAQs</h1>
       </header>
-      <section>
-        <Accordion.Root>
-          {faq.map((question) => {
-            return (
-              <Accordion.Item
-                id={question.id.toString()}
-                key={question.id}
-              >
-                <Accordion.Trigger> {question.question}</Accordion.Trigger>
-                <Accordion.Content>{question.answer}</Accordion.Content>
-              </Accordion.Item>
-            );
-          })}
-        </Accordion.Root>
-      </section>
+
+      <Accordion.Root>
+        {faq.map((question) => {
+          return (
+            <Accordion.Item
+              id={question.id.toString()}
+              key={question.id}
+            >
+              <Accordion.Trigger> {question.question}</Accordion.Trigger>
+              <Accordion.Content>{question.answer}</Accordion.Content>
+            </Accordion.Item>
+          );
+        })}
+      </Accordion.Root>
     </div>
   );
 }

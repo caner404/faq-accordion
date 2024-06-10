@@ -24,25 +24,24 @@ function Accordion(props: PropsWithChildren) {
 }
 
 function AccordionItem({ children, id }: PropsWithChildren<{ id: string }>) {
-  return (
-    <AccordionItemContext.Provider value={{ id }}>
-      <div>{children}</div>
-    </AccordionItemContext.Provider>
-  );
+  return <AccordionItemContext.Provider value={{ id }}>{children}</AccordionItemContext.Provider>;
 }
 
 function AccordionTrigger({ children }: PropsWithChildren) {
   const { openItem, toggle } = useAccordionContext();
   const { id } = useAccordionItemContext();
   return (
-    <div
+    <section
+      className='flex justify-between items-center'
       onClick={() => toggle(id)}
-      className='flex items-center justify-between gap-10 border-t border-light-pink py-5 hover:cursor-pointer'
     >
-      <h2 className='font-semibold text-dark-purple hover:text-custom-pink text-base'>{children}</h2>
-
+      <details className='flex items-center justify-between gap-10 border-t border-light-pink py-5 hover:cursor-pointer'>
+        <summary className='font-semibold text-dark-purple hover:text-custom-pink text-base list-none'>
+          {children}
+        </summary>
+      </details>
       <button aria-label='Button Open or Close question'>{openItem === id ? <IconMinus /> : <IconPlus />}</button>
-    </div>
+    </section>
   );
 }
 
