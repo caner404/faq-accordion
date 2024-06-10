@@ -39,7 +39,10 @@ function FAQAccordion() {
         <Accordion.Root>
           {faq.map((question) => {
             return (
-              <Accordion.Item id={question.id.toString()}>
+              <Accordion.Item
+                id={question.id.toString()}
+                key={question.id}
+              >
                 <Accordion.Trigger> {question.question}</Accordion.Trigger>
                 <Accordion.Content>{question.answer}</Accordion.Content>
               </Accordion.Item>
