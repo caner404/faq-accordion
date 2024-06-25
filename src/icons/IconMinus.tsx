@@ -7,6 +7,7 @@ function IconMinus() {
       fill='none'
       viewBox='0 0 30 31'
       className='w-8 h-8 flex-shrink-0'
+      aria-label='minus icon'
     >
       <path
         fill='#301534'

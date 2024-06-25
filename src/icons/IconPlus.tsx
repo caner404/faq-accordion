@@ -7,6 +7,7 @@ function IconPlus() {
       fill='none'
       viewBox='0 0 30 31'
       className='w-8 h-8 flex-shrink-0'
+      aria-label='plus icon'
     >
       <path
         fill='#AD28EB'

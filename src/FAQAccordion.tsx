@@ -36,11 +36,11 @@ function FAQAccordion() {
         <h1 className='text-3xl sm:text[3.5rem]'>FAQs</h1>
       </header>
 
-      <Accordion.Root>
+      <Accordion.Root defaultValue='1'>
         {faq.map((question) => {
           return (
             <Accordion.Item
-              id={question.id.toString()}
+              value={question.id.toString()}
               key={question.id}
             >
               <Accordion.Trigger> {question.question}</Accordion.Trigger>

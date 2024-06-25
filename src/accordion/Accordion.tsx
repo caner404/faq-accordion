@@ -6,15 +6,12 @@ interface AccordionContextType {
   openItem: string | null;
   toggle: (item: string) => void;
 }
-interface AccordionItemContextType {
-  id: string;
-}
-
 const AccordionContext = createContext<AccordionContextType | null>(null);
-const AccordionItemContext = createContext<AccordionItemContextType | null>(null);
-
-function Accordion(props: PropsWithChildren) {
-  const [openItem, setOpenItem] = useState<string | null>(null);
+export interface AccordionProps {
+  defaultValue?: string;
+}
+function Accordion(props: PropsWithChildren<AccordionProps>) {
+  const [openItem, setOpenItem] = useState<string | null>(props.defaultValue ?? null);
 
   const toggle = (item: string) => {
     setOpenItem((prev) => (prev === item ? null : item));
@@ -23,32 +20,40 @@ function Accordion(props: PropsWithChildren) {
   return <AccordionContext.Provider value={{ openItem, toggle }}>{props.children}</AccordionContext.Provider>;
 }
 
-function AccordionItem({ children, id }: PropsWithChildren<{ id: string }>) {
-  return <AccordionItemContext.Provider value={{ id }}>{children}</AccordionItemContext.Provider>;
+interface AccordionItemContextType {
+  value: string;
+}
+const AccordionItemContext = createContext<AccordionItemContextType | null>(null);
+export interface AccordionItemProps {
+  value: string;
+}
+
+function AccordionItem(props: PropsWithChildren<AccordionItemProps>) {
+  return <AccordionItemContext.Provider value={{ value: props.value }}>{props.children}</AccordionItemContext.Provider>;
 }
 
 function AccordionTrigger({ children }: PropsWithChildren) {
   const { openItem, toggle } = useAccordionContext();
-  const { id } = useAccordionItemContext();
+  const { value } = useAccordionItemContext();
   return (
     <section
       className='flex justify-between items-center'
-      onClick={() => toggle(id)}
+      onClick={() => toggle(value)}
     >
       <details className='flex items-center justify-between gap-10 border-t border-light-pink py-5 hover:cursor-pointer'>
         <summary className='font-semibold text-dark-purple hover:text-custom-pink text-base list-none'>
           {children}
         </summary>
       </details>
-      <button aria-label='Button Open or Close question'>{openItem === id ? <IconMinus /> : <IconPlus />}</button>
+      {openItem === value ? <IconMinus /> : <IconPlus />}
     </section>
   );
 }
 
 function AccordionContent({ children }: PropsWithChildren) {
   const { openItem } = useAccordionContext();
-  const { id } = useAccordionItemContext();
-  const isOpen = openItem === id;
+  const { value } = useAccordionItemContext();
+  const isOpen = openItem === value;
 
   return (
     <div className={`overflow-hidden transition-[max-height] duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
