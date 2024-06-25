@@ -40,8 +40,8 @@ function AccordionTrigger({ children }: PropsWithChildren) {
       className='flex justify-between items-center'
       onClick={() => toggle(value)}
     >
-      <details className='flex items-center justify-between gap-10 border-t border-light-pink py-5 hover:cursor-pointer'>
-        <summary className='font-semibold text-dark-purple hover:text-custom-pink text-base list-none'>
+      <details className='flex items-center justify-between gap-10 border-t border-light-pink py-6 hover:cursor-pointer'>
+        <summary className='font-semibold text-dark-purple hover:text-custom-pink text-base list-none '>
           {children}
         </summary>
       </details>
@@ -57,7 +57,7 @@ function AccordionContent({ children }: PropsWithChildren) {
 
   return (
     <div className={`overflow-hidden transition-[max-height] duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
-      <p className='py-2 text-pale-purple text-base'>{children}</p>
+      <p className='pb-6 text-pale-purple text-base'>{children}</p>
     </div>
   );
 }
