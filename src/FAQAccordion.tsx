@@ -33,7 +33,7 @@ function FAQAccordion() {
     <div className='flex flex-col justify-center rounded-xl m-5 p-10  bg-white z-50 absolute top-[18%] mt sm:top-1/3 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[600px]'>
       <header className='flex items-center gap-6'>
         <IconStar />
-        <h1 className='text-[66px] sm:text[3.5rem] font-bold'>FAQs</h1>
+        <h1 className='text-[2rem] sm:text-[3.5rem] font-bold'>FAQs</h1>
       </header>
 
       <Accordion.Root defaultValue='1'>

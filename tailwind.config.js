@@ -3,6 +3,11 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        mobile: '375px',
+        bigmobile: '425px',
+        desktop: '1440px',
+      },
       colors: {
         'dark-purple': '#301534',
         'custom-pink': '#AD28EB',
