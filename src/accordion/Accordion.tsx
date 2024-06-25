@@ -29,24 +29,28 @@ export interface AccordionItemProps {
 }
 
 function AccordionItem(props: PropsWithChildren<AccordionItemProps>) {
-  return <AccordionItemContext.Provider value={{ value: props.value }}>{props.children}</AccordionItemContext.Provider>;
+  return (
+    <AccordionItemContext.Provider value={{ value: props.value }}>
+      {<section className='border-b border-light-pink'>{props.children}</section>}
+    </AccordionItemContext.Provider>
+  );
 }
 
 function AccordionTrigger({ children }: PropsWithChildren) {
   const { openItem, toggle } = useAccordionContext();
   const { value } = useAccordionItemContext();
   return (
-    <section
-      className='flex justify-between items-center'
-      onClick={() => toggle(value)}
-    >
-      <details className='flex items-center justify-between gap-10 border-t border-light-pink py-6 hover:cursor-pointer'>
+    <div className='flex justify-between items-center'>
+      <details
+        className='flex items-center justify-between py-6 hover:cursor-pointer'
+        onClick={() => toggle(value)}
+      >
         <summary className='font-semibold text-dark-purple hover:text-custom-pink text-base list-none '>
           {children}
         </summary>
       </details>
       {openItem === value ? <IconMinus /> : <IconPlus />}
-    </section>
+    </div>
   );
 }
 
